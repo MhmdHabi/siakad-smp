@@ -1,9 +1,9 @@
 @extends('layouts.master')
 
-@section('judul', 'Data User')
+@section('judul', 'Data siswa')
 
 @section('content')
-    <div class="container mx-auto mt-5">
+    <div class="container mx-auto mt-5 bg-gray-100 shadow-lg rounded-lg p-6">
         <!-- Success and Error Messages -->
         @if (session('success'))
             <div class="mb-4 p-4 bg-green-100 text-green-800 rounded-lg">
@@ -15,6 +15,40 @@
             </div>
         @endif
 
+        <!-- 🟦 Info Box -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
+            <!-- Total Siswa -->
+            <div class="bg-white border-l-4 border-blue-600 p-4 shadow rounded-lg flex items-center">
+                <i class="fas fa-users text-blue-600 text-2xl mr-4"></i>
+                <div>
+                    <p class="text-gray-600 text-sm">Total Siswa</p>
+                    <h3 class="text-xl font-bold text-gray-800">{{ $users->count() }}</h3>
+                </div>
+            </div>
+
+            <!-- Siswa Laki-laki -->
+            <div class="bg-white border-l-4 border-green-600 p-4 shadow rounded-lg flex items-center">
+                <i class="fas fa-male text-green-600 text-2xl mr-4"></i>
+                <div>
+                    <p class="text-gray-600 text-sm">Laki-laki</p>
+                    <h3 class="text-xl font-bold text-gray-800">
+                        {{ $users->where('gender', 'Laki-laki')->count() }}
+                    </h3>
+                </div>
+            </div>
+
+            <!-- Siswa Perempuan -->
+            <div class="bg-white border-l-4 border-pink-500 p-4 shadow rounded-lg flex items-center">
+                <i class="fas fa-female text-pink-500 text-2xl mr-4"></i>
+                <div>
+                    <p class="text-gray-600 text-sm">Perempuan</p>
+                    <h3 class="text-xl font-bold text-gray-800">
+                        {{ $users->where('gender', 'Perempuan')->count() }}
+                    </h3>
+                </div>
+            </div>
+        </div>
+
         <!-- Title and Buttons -->
         <div class="flex justify-between items-center mb-4">
             <h1 class="text-lg lg:text-2xl font-semibold text-gray-800">Data Siswa Siswi</h1>
@@ -24,7 +58,6 @@
                     class="hidden sm:inline-block text-sm px-6 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-400">
                     <i class="fas fa-user-plus mr-2"></i> Tambah Data
                 </a>
-
 
                 <!-- Ikon untuk layar kecil -->
                 <div class="inline-flex space-x-2 sm:hidden">
@@ -37,7 +70,7 @@
         </div>
 
         <!-- Table for Data User -->
-        <div class="bg-white shadow-lg rounded-lg overflow-x-auto p-4">
+        <div class="overflow-x-auto p-4">
             <table class="min-w-full table-auto border-separate border-spacing-0" id="dataTable">
                 <thead class="bg-gradient-to-r from-blue-600 to-blue-500 text-white">
                     <tr>
@@ -55,7 +88,7 @@
                             <td class="px-6 py-3 text-gray-800">{{ $user->name }}</td>
                             <td class="px-6 py-3 text-gray-800">{{ $user->nisn }}</td>
                             <td class="px-6 py-3 text-gray-800">{{ $user->gender }}</td>
-                            <td class="px-6 py-3 ">
+                            <td class="px-6 py-3 text-center">
                                 <a href="{{ route('siswa.edit', $user->id) }}"
                                     class="text-blue-600 hover:text-blue-800 mx-2">
                                     <i class="fas fa-edit"></i>
@@ -76,29 +109,28 @@
         </div>
     </div>
 
+    <!-- Scripts -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js"></script>
-
-    <!-- SweetAlert Script -->
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    <!-- Script DataTable & SweetAlert -->
     <script>
         $(document).ready(function() {
-            // Initialize DataTable with pagination options
             $('#dataTable').DataTable({
-                "paging": true,
-                "searching": true,
-                "info": true,
-                "lengthChange": true,
-                "pageLength": 10,
-                "lengthMenu": [10, 25, 50, 100, 500, ]
+                paging: true,
+                searching: true,
+                info: true,
+                lengthChange: true,
+                pageLength: 10,
+                lengthMenu: [10, 25, 50, 100, 500],
             });
         });
 
         // SweetAlert delete confirmation
         document.querySelectorAll('.delete-form').forEach((form) => {
             form.addEventListener('submit', function(e) {
-                e.preventDefault(); // Prevent form submission
-
+                e.preventDefault();
                 Swal.fire({
                     title: 'Apakah Anda yakin?',
                     text: "Anda tidak akan bisa mengembalikan ini!",

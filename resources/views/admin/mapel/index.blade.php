@@ -3,17 +3,7 @@
 @section('judul', 'Jenis Mata Pelajaran')
 
 @section('content')
-    <div class="container mx-auto mt-5">
-        <!-- Success and Error Messages -->
-        @if (session('success'))
-            <div class="mb-4 p-4 bg-green-100 text-green-800 rounded-lg">
-                {{ session('success') }}
-            </div>
-        @elseif (session('error'))
-            <div class="mb-4 p-4 bg-red-100 text-red-800 rounded-lg">
-                {{ session('error') }}
-            </div>
-        @endif
+    <div class="container mx-auto mt-5 bg-gray-100 shadow-lg rounded-lg p-6">
 
         <!-- Title -->
         <div class="flex justify-between items-center mb-4">
@@ -33,12 +23,13 @@
         </div>
 
         <!-- Table for Mata Pelajaran -->
-        <div class="bg-white shadow-lg rounded-lg overflow-x-auto p-4">
+        <div class="overflow-x-auto p-4">
             <table class="min-w-full table-auto border-separate border-spacing-0" id="dataTable">
                 <thead class="bg-gradient-to-r from-blue-600 to-blue-500 text-white">
                     <tr>
                         <th class="px-6 py-3 text-left">#</th>
                         <th class="px-6 py-3 text-left">Nama Mapel</th>
+                        <th class="px-6 py-3 text-left">Kode Mapel</th>
                         <th class="px-6 py-3 text-left">Dibuat Pada</th>
                         <th class="px-6 py-3 text-left">Aksi</th>
                     </tr>
@@ -48,6 +39,7 @@
                         <tr class="hover:bg-gray-50 transition-all duration-200 ease-in-out">
                             <td class="px-6 py-3 text-gray-800">{{ $loop->iteration }}</td>
                             <td class="px-6 py-3 text-gray-800">{{ $mapel->nama_mapel }}</td>
+                            <td class="px-6 py-3 text-gray-800">{{ $mapel->kode_mapel }}</td>
                             <td class="px-6 py-3 text-gray-800">{{ $mapel->created_at->format('d M Y') }}</td>
                             <td class="px-6 py-3">
                                 <a href="{{ route('mapel.edit', $mapel->id) }}"
@@ -108,6 +100,22 @@
                 }
             });
         });
+
+        @if (session('success'))
+            Swal.fire({
+                icon: 'success',
+                title: 'Berhasil!',
+                text: '{{ session('success') }}',
+                confirmButtonColor: '#3085d6'
+            });
+        @elseif (session('error'))
+            Swal.fire({
+                icon: 'error',
+                title: 'Gagal!',
+                text: '{{ session('error') }}',
+                confirmButtonColor: '#d33'
+            });
+        @endif
     </script>
 
     <style>

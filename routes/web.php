@@ -104,6 +104,8 @@ Route::prefix('admin')->middleware('role:admin')->group(function () {
         Route::delete('/siswa_kelas/{id}', [SiswaKelasController::class, 'destroy'])->name('siswa_kelas.destroy');
     });
 });
+
+// route guru
 Route::prefix('guru')->middleware('role:guru')->group(function () {
     Route::get('/jadwal-mengajar', [JadwalMengajarGuruController::class, 'index'])->name('jadwal.mengajar');
 
@@ -113,6 +115,8 @@ Route::prefix('guru')->middleware('role:guru')->group(function () {
 
     Route::put('/nilai/update/{id}', [NilaiController::class, 'update'])->name('nilai.update');
 });
+
+// route siswa
 Route::prefix('siswa')->middleware('role:siswa')->group(function () {
     Route::get('/jadwal-pelajaran', [JadwalPelajaranSiswaController::class, 'index'])->name('jadwal.pelajaran');
     Route::get('/nilai', [NilaiSiswaController::class, 'index'])->name('siswa.nilai');

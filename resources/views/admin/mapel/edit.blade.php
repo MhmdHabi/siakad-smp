@@ -26,9 +26,20 @@
             class="bg-white p-6 rounded-lg w-full shadow-md max-w-full">
             @csrf
             @method('PUT')
+
+            <!-- Kode Mata Pelajaran -->
+            <div class="mb-4">
+                <label for="kode_mapel" class="block text-sm font-medium text-gray-700">Kode Mata Pelajaran</label>
+                <input type="text" id="kode_mapel" name="kode_mapel" value="{{ old('kode_mapel', $mapel->kode_mapel) }}"
+                    class="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500">
+                @error('kode_mapel')
+                    <div class="text-red-600 text-sm mt-1">{{ $message }}</div>
+                @enderror
+            </div>
+
             <!-- Nama Mata Pelajaran -->
             <div class="mb-4">
-                <label for="name" class="block text-sm font-medium text-gray-700">Nama Mata Pelajaran</label>
+                <label for="nama_mapel" class="block text-sm font-medium text-gray-700">Nama Mata Pelajaran</label>
                 <input type="text" id="nama_mapel" name="nama_mapel" value="{{ old('nama_mapel', $mapel->nama_mapel) }}"
                     class="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500">
                 @error('nama_mapel')
@@ -43,5 +54,6 @@
                 </button>
             </div>
         </form>
+
     </div>
 @endsection

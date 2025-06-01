@@ -13,7 +13,8 @@ class MataPelajaran extends Model
 
     // Kolom yang bisa diisi (fillable)
     protected $fillable = [
-        'nama_mapel'
+        'nama_mapel',
+        'kode_mapel',
     ];
 
     public function jadwalPelajarans()

@@ -23,11 +23,13 @@ class RuanganController extends Controller
     {
         $request->validate([
             'nama_ruangan' => 'required|string|max:255',
+            'kode_ruangan' => 'required|string|max:50|unique:ruangans,kode_ruangan',
         ]);
 
         try {
             Ruangan::create([
                 'nama_ruangan' => $request->nama_ruangan,
+                'kode_ruangan' => $request->kode_ruangan,
             ]);
 
             return redirect()->route('admin.ruangan')->with('success', 'Ruangan berhasil ditambahkan.');
@@ -35,6 +37,7 @@ class RuanganController extends Controller
             return back()->with('error', 'Terjadi kesalahan saat menyimpan data.');
         }
     }
+
 
     public function edit($id)
     {
@@ -47,12 +50,14 @@ class RuanganController extends Controller
     {
         $request->validate([
             'nama_ruangan' => 'required|string|max:255',
+            'kode_ruangan' => 'nullable|string|max:50',
         ]);
 
         try {
-            $mapel = Ruangan::findOrFail($id);
-            $mapel->update([
-                'nama_mapel' => $request->nama_mapel,
+            $ruangan = Ruangan::findOrFail($id);
+            $ruangan->update([
+                'nama_ruangan' => $request->nama_ruangan,
+                'kode_ruangan' => $request->kode_ruangan,
             ]);
 
             return redirect()->route('admin.ruangan')->with('success', 'Ruangan berhasil diperbarui.');

@@ -3,18 +3,7 @@
 @section('judul', 'Ruangan')
 
 @section('content')
-    <div class="container mx-auto mt-5">
-        <!-- Success and Error Messages -->
-        @if (session('success'))
-            <div class="mb-4 p-4 bg-green-100 text-green-800 rounded-lg">
-                {{ session('success') }}
-            </div>
-        @elseif (session('error'))
-            <div class="mb-4 p-4 bg-red-100 text-red-800 rounded-lg">
-                {{ session('error') }}
-            </div>
-        @endif
-
+    <div class="container mx-auto mt-5 bg-gray-100 shadow-lg rounded-lg p-6">
         <!-- Title -->
         <div class="flex justify-between items-center mb-4">
             <h1 class="text-lg lg:text-2xl font-semibold text-gray-800">Ruangan</h1>
@@ -33,12 +22,13 @@
         </div>
 
         <!-- Table for Jenis Mata Pelajaran -->
-        <div class="bg-white shadow-lg rounded-lg overflow-x-auto p-4">
+        <div class="overflow-x-auto p-4">
             <table class="min-w-full table-auto border-separate border-spacing-0" id="dataTable">
                 <thead class="bg-gradient-to-r from-blue-600 to-blue-500 text-white">
                     <tr>
                         <th class="px-6 py-3 text-left">#</th>
                         <th class="px-6 py-3 text-left">Nama Ruangan</th>
+                        <th class="px-6 py-3 text-left">Kode Ruangan</th>
                         <th class="px-6 py-3 text-left">Dibuat Pada</th>
                         <th class="px-6 py-3 text-left">Aksi</th>
                     </tr>
@@ -48,6 +38,7 @@
                         <tr class="hover:bg-gray-50 transition-all duration-200 ease-in-out">
                             <td class="px-6 py-3 text-gray-800">{{ $loop->iteration }}</td>
                             <td class="px-6 py-3 text-gray-800">{{ $item->nama_ruangan }}</td>
+                            <td class="px-6 py-3 text-gray-800">{{ $item->kode_ruangan }}</td>
                             <td class="px-6 py-3 text-gray-800">{{ $item->created_at->format('d M Y') }}</td>
                             <td class="px-6 py-3">
                                 <a href="{{ route('ruangan.edit', $item->id) }}"
@@ -85,13 +76,35 @@
                 "pageLength": 10,
                 "lengthMenu": [10, 25, 50, 100]
             });
+
+            // SweetAlert untuk notifikasi sukses
+            @if (session('success'))
+                Swal.fire({
+                    icon: 'success',
+                    title: 'Sukses!',
+                    text: '{{ session('success') }}',
+                    timer: 2500,
+                    showConfirmButton: false
+                });
+            @endif
+
+            // SweetAlert untuk notifikasi error
+            @if (session('error'))
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Gagal!',
+                    text: '{{ session('error') }}',
+                    timer: 2500,
+                    showConfirmButton: false
+                });
+            @endif
         });
 
+        // Konfirmasi hapus data dengan SweetAlert
         $(document).on('click', '.delete-button', function(e) {
             e.preventDefault();
 
             const form = $(this).closest('form');
-            const url = form.attr('action');
 
             Swal.fire({
                 title: 'Apakah Anda yakin?',

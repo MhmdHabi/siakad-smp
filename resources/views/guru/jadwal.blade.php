@@ -3,31 +3,34 @@
 @section('judul', 'Jenis Mata Pelajaran')
 
 @section('content')
-    <div class="max-w-6xl bg-white p-6 shadow-md rounded-lg">
-        <h1 class="text-2xl font-bold text-center mb-6">Jadwal Mengajar</h1>
+    <div class="max-w-6xl mx-auto bg-white p-6 rounded-lg shadow-md">
+        <h1 class="text-xl font-semibold text-center mb-8 text-blue-800">📅 Jadwal Mengajar</h1>
 
         @if ($jadwalMengajar->isEmpty())
-            <p class="text-center text-gray-500">Belum ada jadwal mengajar.</p>
+            <p class="text-center text-gray-500 italic">Belum ada jadwal mengajar.</p>
         @else
-            <div class="overflow-auto"> <!-- Tambahkan overflow-auto untuk responsif -->
-                <table class="min-w-full bg-white border-collapse border border-gray-200">
+            <div class="overflow-x-auto">
+                <table class="min-w-full border-collapse">
                     <thead>
-                        <tr>
-                            <th class="px-4 py-2 border">Hari</th>
-                            <th class="px-4 py-2 border">Jam</th>
-                            <th class="px-4 py-2 border">Mata Pelajaran</th>
-                            <th class="px-4 py-2 border">Kelas</th>
-                            <th class="px-4 py-2 border">Ruangan</th>
+                        <tr class="bg-blue-100 text-blue-900 uppercase text-sm font-medium tracking-wide">
+                            <th class="px-6 py-3 text-left border-b border-blue-300">Hari</th>
+                            <th class="px-6 py-3 text-left border-b border-blue-300">Jam</th>
+                            <th class="px-6 py-3 text-left border-b border-blue-300">Mata Pelajaran</th>
+                            <th class="px-6 py-3 text-left border-b border-blue-300">Kelas</th>
+                            <th class="px-6 py-3 text-left border-b border-blue-300">Ruangan</th>
                         </tr>
                     </thead>
-                    <tbody>
+                    <tbody class="text-gray-700 text-sm">
                         @foreach ($jadwalMengajar as $jadwal)
-                            <tr>
-                                <td class="px-4 py-2 border">{{ $jadwal->hari }}</td>
-                                <td class="px-4 py-2 border">{{ $jadwal->jam_mulai }} - {{ $jadwal->jam_selesai }}</td>
-                                <td class="px-4 py-2 border">{{ $jadwal->mapel->nama_mapel }}</td>
-                                <td class="px-4 py-2 border">{{ $jadwal->kelas->nama_kelas }}</td>
-                                <td class="px-4 py-2 border">{{ $jadwal->ruangan->nama_ruangan }}</td>
+                            <tr class="hover:bg-blue-50 transition">
+                                <td class="px-6 py-4 border-b border-blue-200">{{ $jadwal->hari }}</td>
+                                <td class="px-6 py-4 border-b border-blue-200">
+                                    {{ \Carbon\Carbon::parse($jadwal->jam_mulai)->format('H:i') }} -
+                                    {{ \Carbon\Carbon::parse($jadwal->jam_selesai)->format('H:i') }}
+                                </td>
+                                <td class="px-6 py-4 border-b border-blue-200">{{ $jadwal->mapel->nama_mapel }}</td>
+                                <td class="px-6 py-4 border-b border-blue-200">{{ $jadwal->kelas->nama_kelas }}</td>
+                                <td class="px-6 py-4 border-b border-blue-200">{{ $jadwal->ruangan->nama_ruangan }}</td>
                             </tr>
                         @endforeach
                     </tbody>

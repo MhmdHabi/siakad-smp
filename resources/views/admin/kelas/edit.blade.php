@@ -25,7 +25,17 @@
         <form action="{{ route('kelas.update', $kelas->id) }}" method="POST"
             class="bg-white p-6 rounded-lg w-full shadow-md max-w-full">
             @csrf
-            @method('PUT') <!-- Method to indicate it's an update request -->
+            @method('PUT')
+
+            <!-- Kode Kelas -->
+            <div class="mb-4">
+                <label for="kode_kelas" class="block text-sm font-medium text-gray-700">Kode Kelas</label>
+                <input type="text" id="kode_kelas" name="kode_kelas" value="{{ old('kode_kelas', $kelas->kode_kelas) }}"
+                    class="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500">
+                @error('kode_kelas')
+                    <div class="text-red-600 text-sm mt-1">{{ $message }}</div>
+                @enderror
+            </div>
 
             <!-- Nama Kelas -->
             <div class="mb-4">

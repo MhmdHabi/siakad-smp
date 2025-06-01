@@ -34,6 +34,15 @@
                 @enderror
             </div>
 
+            <div class="mb-4">
+                <label for="name" class="block text-sm font-medium text-gray-700">Kode Mata Pelajaran</label>
+                <input type="text" id="kode_mapel" name="kode_mapel" value="{{ old('kode_mapel') }}"
+                    class="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500">
+                @error('kode_mapel')
+                    <div class="text-red-600 text-sm mt-1">{{ $message }}</div>
+                @enderror
+            </div>
+
             <div class="flex justify-end">
                 <button type="submit"
                     class="px-6 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-400">

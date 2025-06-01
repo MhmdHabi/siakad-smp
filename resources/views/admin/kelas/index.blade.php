@@ -3,17 +3,7 @@
 @section('judul', 'Jenis Kelas')
 
 @section('content')
-    <div class="container mx-auto mt-5">
-        <!-- Success and Error Messages -->
-        @if (session('success'))
-            <div class="mb-4 p-4 bg-green-100 text-green-800 rounded-lg">
-                {{ session('success') }}
-            </div>
-        @elseif (session('error'))
-            <div class="mb-4 p-4 bg-red-100 text-red-800 rounded-lg">
-                {{ session('error') }}
-            </div>
-        @endif
+    <div class="container mx-auto mt-5 bg-gray-100 shadow-lg rounded-lg p-6">
 
         <!-- Title -->
         <div class="flex justify-between items-center mb-4">
@@ -33,12 +23,13 @@
         </div>
 
         <!-- Table for Kelas -->
-        <div class="bg-white shadow-lg rounded-lg overflow-x-auto p-4">
+        <div class="overflow-x-auto p-4">
             <table class="min-w-full table-auto border-separate border-spacing-0" id="dataTable">
                 <thead class="bg-gradient-to-r from-blue-600 to-blue-500 text-white">
                     <tr>
                         <th class="px-6 py-3 text-left">#</th>
                         <th class="px-6 py-3 text-left">Nama Kelas</th>
+                        <th class="px-6 py-3 text-left">Kode Kelas</th>
                         <th class="px-6 py-3 text-left">Wali Kelas</th>
                         <th class="px-6 py-3 text-left">Dibuat Pada</th>
                         <th class="px-6 py-3 text-left">Aksi</th>
@@ -49,6 +40,7 @@
                         <tr class="hover:bg-gray-50 transition-all duration-200 ease-in-out">
                             <td class="px-6 py-3 text-gray-800">{{ $loop->iteration }}</td>
                             <td class="px-6 py-3 text-gray-800">{{ $k->nama_kelas }}</td>
+                            <td class="px-6 py-3 text-gray-800">{{ $k->kode_kelas }}</td>
                             <td class="px-6 py-3 text-gray-800">{{ $k->waliKelas->name ?? 'Wali Kelas Tidak Tersedia' }}
                             <td class="px-6 py-3 text-gray-800">{{ $k->created_at->format('d M Y') }}</td>
                             </td>
@@ -78,6 +70,8 @@
 
     <!-- SweetAlert Script -->
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <!-- SweetAlert Script -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script>
         $(document).ready(function() {
             $('#dataTable').DataTable({
@@ -88,13 +82,35 @@
                 "pageLength": 10,
                 "lengthMenu": [10, 25, 50, 100]
             });
+
+            // Cek session success dan tampilkan SweetAlert
+            @if (session('success'))
+                Swal.fire({
+                    icon: 'success',
+                    title: 'Sukses!',
+                    text: '{{ session('success') }}',
+                    timer: 2000,
+                    showConfirmButton: false
+                });
+            @endif
+
+            // Kalau mau, bisa tambahkan error juga
+            @if (session('error'))
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Error!',
+                    text: '{{ session('error') }}',
+                    timer: 2000,
+                    showConfirmButton: false
+                });
+            @endif
         });
 
+        // SweetAlert konfirmasi hapus (sudah ada di kode kamu)
         $(document).on('click', '.delete-button', function(e) {
             e.preventDefault();
 
             const form = $(this).closest('form');
-            const url = form.attr('action');
 
             Swal.fire({
                 title: 'Apakah Anda yakin?',

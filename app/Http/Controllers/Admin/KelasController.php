@@ -29,12 +29,13 @@ class KelasController extends Controller
     {
         $request->validate([
             'nama_kelas' => 'required|string|max:255',
-            'wali_kelas_id' => 'required|exists:users,id', // Validasi bahwa wali_kelas_id ada di tabel users
+            'kode_kelas' => 'required|string|max:10|unique:kelas,kode_kelas',
+            'wali_kelas_id' => 'required|exists:users,id',
         ]);
 
         Kelas::create($request->all());
 
-        return redirect()->route('admin.kelas')->with('success', 'Kelas created successfully!');
+        return redirect()->route('admin.kelas')->with('success', 'Kelas berhasil di perbarui!');
     }
 
     // Menampilkan form untuk mengedit kelas
@@ -50,13 +51,14 @@ class KelasController extends Controller
     {
         $request->validate([
             'nama_kelas' => 'required|string|max:255',
+            'kode_kelas' => 'nullable|string|max:10|',
             'wali_kelas_id' => 'required|exists:users,id', // Validasi bahwa wali_kelas_id ada di tabel users
         ]);
 
         $kelas = Kelas::findOrFail($id);
         $kelas->update($request->all());
 
-        return redirect()->route('admin.kelas')->with('success', 'Kelas updated successfully!');
+        return redirect()->route('admin.kelas')->with('success', 'Kelas berhasil di perbarui!');
     }
 
     // Menghapus data kelas

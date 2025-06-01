@@ -3,7 +3,7 @@
 @section('judul', 'Data Guru')
 
 @section('content')
-    <div class="container mx-auto mt-5">
+    <div class="container mx-auto mt-5 bg-gray-100 shadow-lg rounded-lg p-6">
         <!-- Success and Error Messages -->
         @if (session('success'))
             <div class="mb-4 p-4 bg-green-100 text-green-800 rounded-lg">
@@ -14,6 +14,18 @@
                 {{ session('error') }}
             </div>
         @endif
+
+        <!-- 🟦 Info Box -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
+            <!-- Total Siswa -->
+            <div class="bg-white border-l-4 border-blue-600 p-4 shadow rounded-lg flex items-center">
+                <i class="fas fa-users text-blue-600 text-2xl mr-4"></i>
+                <div>
+                    <p class="text-gray-600 text-sm">Total Guru</p>
+                    <h3 class="text-xl font-bold text-gray-800">{{ $teachers->count() }}</h3>
+                </div>
+            </div>
+        </div>
 
         <!-- Title -->
         <div class="flex justify-between items-center mb-4">
@@ -36,7 +48,7 @@
         </div>
 
         <!-- Table for Data Guru -->
-        <div class="bg-white shadow-lg rounded-lg overflow-x-auto p-4">
+        <div class="overflow-x-auto p-4">
             <table class="min-w-full table-auto border-separate border-spacing-0" id="dataTable">
                 <thead class="bg-gradient-to-r from-blue-600 to-blue-500 text-white">
                     <tr>

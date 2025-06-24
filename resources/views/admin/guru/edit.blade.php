@@ -27,26 +27,6 @@
             @csrf
             @method('PUT') <!-- Using PUT method for update -->
 
-            <!-- Name -->
-            <div class="mb-4">
-                <label for="name" class="block text-sm font-medium text-gray-700">Nama</label>
-                <input type="text" id="name" name="name" value="{{ old('name', $guru->name) }}"
-                    class="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500">
-                @error('name')
-                    <div class="text-red-600 text-sm mt-1">{{ $message }}</div>
-                @enderror
-            </div>
-
-            <!-- Username -->
-            <div class="mb-4">
-                <label for="username" class="block text-sm font-medium text-gray-700">Username</label>
-                <input type="text" id="username" name="username" value="{{ old('username', $guru->username) }}"
-                    class="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500">
-                @error('username')
-                    <div class="text-red-600 text-sm mt-1">{{ $message }}</div>
-                @enderror
-            </div>
-
             <!-- NIP -->
             <div class="mb-4">
                 <label for="nip" class="block text-sm font-medium text-gray-700">NIP</label>
@@ -57,9 +37,19 @@
                 @enderror
             </div>
 
+            <!-- Name -->
+            <div class="mb-4">
+                <label for="name" class="block text-sm font-medium text-gray-700">Nama</label>
+                <input type="text" id="name" name="name" value="{{ old('name', $guru->name) }}"
+                    class="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500">
+                @error('name')
+                    <div class="text-red-600 text-sm mt-1">{{ $message }}</div>
+                @enderror
+            </div>
+
             <!-- Gender -->
             <div class="mb-4">
-                <label for="gender" class="block text-sm font-medium text-gray-700">Gender</label>
+                <label for="gender" class="block text-sm font-medium text-gray-700">Jenis Kelamin</label>
                 <select id="gender" name="gender"
                     class="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500">
                     <option selected disabled>-- Select Gender --</option>
@@ -92,6 +82,47 @@
                 @enderror
             </div>
 
+            <!-- Tempat Lahir -->
+            <div class="mb-4">
+                <label for="tempat_lahir" class="block text-sm font-medium text-gray-700">Tempat Lahir</label>
+                <input type="text" id="tempat_lahir" name="tempat_lahir"
+                    value="{{ old('tempat_lahir', $guru->tempat_lahir) }}"
+                    class="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500">
+                @error('tempat_lahir')
+                    <div class="text-red-600 text-sm mt-1">{{ $message }}</div>
+                @enderror
+            </div>
+
+            <!-- Tanggal Lahir -->
+            <div class="mb-4">
+                <label for="tgl_lahir" class="block text-sm font-medium text-gray-700">Tanggal Lahir</label>
+                <input type="date" id="tgl_lahir" name="tgl_lahir" value="{{ old('tgl_lahir', $guru->tgl_lahir) }}"
+                    class="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500">
+                @error('tgl_lahir')
+                    <div class="text-red-600 text-sm mt-1">{{ $message }}</div>
+                @enderror
+            </div>
+
+            <!-- Status -->
+            <div class="mb-4">
+                <label for="status" class="block text-sm font-medium text-gray-700">Status</label>
+                <input type="text" id="status" name="status" value="{{ old('status', $guru->status) }}"
+                    class="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500">
+                @error('status')
+                    <div class="text-red-600 text-sm mt-1">{{ $message }}</div>
+                @enderror
+            </div>
+
+            <!-- Jenjang -->
+            <div class="mb-4">
+                <label for="jenjang" class="block text-sm font-medium text-gray-700">Jenjang</label>
+                <input type="text" id="jenjang" name="jenjang" value="{{ old('jenjang', $guru->jenjang) }}"
+                    class="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500">
+                @error('jenjang')
+                    <div class="text-red-600 text-sm mt-1">{{ $message }}</div>
+                @enderror
+            </div>
+
             <!-- Role -->
             <div class="mb-4">
                 <label for="role" class="block text-sm font-medium text-gray-700">Role</label>
@@ -119,7 +150,8 @@
 
             <!-- Confirm Password -->
             <div class="mb-4">
-                <label for="password_confirmation" class="block text-sm font-medium text-gray-700">Confirm Password</label>
+                <label for="password_confirmation" class="block text-sm font-medium text-gray-700">Confirm
+                    Password</label>
                 <input type="password" id="password_confirmation" name="password_confirmation"
                     class="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500">
                 @error('password_confirmation')

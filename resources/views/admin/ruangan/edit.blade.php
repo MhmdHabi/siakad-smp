@@ -38,13 +38,23 @@
                 @enderror
             </div>
 
-            <!-- Nama Jenis Mata Pelajaran -->
+            <!-- Nama Ruangan-->
             <div class="mb-4">
-                <label for="nama_ruangan" class="block text-sm font-medium text-gray-700">Nama Jenis Mata Pelajaran</label>
+                <label for="nama_ruangan" class="block text-sm font-medium text-gray-700">Nama Ruangan</label>
                 <input type="text" id="nama_ruangan" name="nama_ruangan"
                     value="{{ old('nama_ruangan', $ruangan->nama_ruangan) }}"
                     class="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500">
                 @error('nama_ruangan')
+                    <div class="text-red-600 text-sm mt-1">{{ $message }}</div>
+                @enderror
+            </div>
+
+            <!-- Kapasitas -->
+            <div class="mb-4">
+                <label for="nama_ruangan" class="block text-sm font-medium text-gray-700">Kapasitas</label>
+                <input type="text" id="kapasitas" name="kapasitas" value="{{ old('kapasitas', $ruangan->kapasitas) }}"
+                    class="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500">
+                @error('kapasitas')
                     <div class="text-red-600 text-sm mt-1">{{ $message }}</div>
                 @enderror
             </div>

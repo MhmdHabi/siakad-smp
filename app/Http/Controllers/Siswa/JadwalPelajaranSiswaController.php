@@ -14,32 +14,40 @@ class JadwalPelajaranSiswaController extends Controller
     {
         $user = auth()->user();
 
-        // Ensure the user is a student
         if ($user->role !== 'siswa') {
             abort(403, 'Unauthorized');
         }
 
-        // Get the active academic year
-        $tahunAkademik = TahunAkademik::where('is_aktif', true)->first();
-        if (!$tahunAkademik) {
+        // Ambil semua tahun akademik aktif
+        $tahunAkademiks = TahunAkademik::where('is_aktif', true)->get();
+
+        if ($tahunAkademiks->isEmpty()) {
             return view('siswa.jadwal', ['jadwal' => [], 'message' => 'Tahun akademik aktif belum diatur.']);
         }
 
-        // Get the student's class in the active academic year
-        $siswaKelas = SiswaKelas::where('siswa_id', $user->id)
-            ->where('tahun_akademik_id', $tahunAkademik->id)
-            ->first();
+        $siswaKelas = null;
+        $jadwal = collect();
 
-        if (!$siswaKelas) {
-            return view('siswa.jadwal', ['jadwal' => [], 'message' => 'Anda belum terdaftar di kelas untuk tahun akademik ini.']);
+        foreach ($tahunAkademiks as $tahunAkademik) {
+            // Cek apakah siswa terdaftar di tahun akademik ini
+            $siswaKelas = SiswaKelas::where('siswa_id', $user->id)
+                ->where('tahun_akademik_id', $tahunAkademik->id)
+                ->first();
+
+            if ($siswaKelas) {
+                // Jika ketemu, ambil jadwal lalu break
+                $jadwal = JadwalPelajaran::where('kelas_id', $siswaKelas->kelas_id)
+                    ->with(['mapel', 'guru', 'ruangan'])
+                    ->orderBy('hari')
+                    ->orderBy('jam_mulai')
+                    ->get();
+                break;
+            }
         }
 
-        // Get the schedule for the class
-        $jadwal = JadwalPelajaran::where('kelas_id', $siswaKelas->kelas_id)
-            ->with(['mapel', 'guru', 'ruangan'])
-            ->orderBy('hari')
-            ->orderBy('jam_mulai')
-            ->get();
+        if (!$siswaKelas) {
+            return view('siswa.jadwal', ['jadwal' => [], 'message' => 'Anda belum terdaftar di kelas untuk tahun akademik aktif manapun.']);
+        }
 
         return view('siswa.jadwal', ['jadwal' => $jadwal, 'message' => null]);
     }

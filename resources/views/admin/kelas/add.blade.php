@@ -27,7 +27,12 @@
 
             <!-- Kode Kelas -->
             <div class="mb-4">
-                <label for="kode_kelas" class="block text-sm font-medium text-gray-700">Kode Kelas</label>
+                <div class="relative inline-block">
+                    <label for="gender" class="block text-sm font-medium text-gray-700">Kode Kelas</label>
+                    <span class="absolute top-1 -right-2 text-red-500 text-[7px]">
+                        <i class="fas fa-asterisk"></i>
+                    </span>
+                </div>
                 <input type="text" id="kode_kelas" name="kode_kelas" value="{{ old('kode_kelas') }}"
                     class="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500">
                 @error('kode_kelas')
@@ -37,7 +42,12 @@
 
             <!-- Nama Kelas -->
             <div class="mb-4">
-                <label for="nama_kelas" class="block text-sm font-medium text-gray-700">Nama Kelas</label>
+                <div class="relative inline-block">
+                    <label for="gender" class="block text-sm font-medium text-gray-700">Nama Kelas</label>
+                    <span class="absolute top-1 -right-2 text-red-500 text-[7px]">
+                        <i class="fas fa-asterisk"></i>
+                    </span>
+                </div>
                 <input type="text" id="nama_kelas" name="nama_kelas" value="{{ old('nama_kelas') }}"
                     class="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500">
                 @error('nama_kelas')
@@ -47,7 +57,12 @@
 
             <!-- Pilih Wali Kelas -->
             <div class="mb-4">
-                <label for="wali_kelas_id" class="block text-sm font-medium text-gray-700">Wali Kelas</label>
+                <div class="relative inline-block">
+                    <label for="gender" class="block text-sm font-medium text-gray-700">Wali Kelas</label>
+                    <span class="absolute top-1 -right-2 text-red-500 text-[7px]">
+                        <i class="fas fa-asterisk"></i>
+                    </span>
+                </div>
                 <select name="wali_kelas_id" id="wali_kelas_id"
                     class="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500">
                     <option value="">Pilih Wali Kelas</option>

@@ -24,23 +24,29 @@ class GuruController extends Controller
     {
         $request->validate([
             'name' => 'required|string|max:255',
-            'username' => 'required|string|max:255|unique:users',
             'nip' => 'required|string|max:20|unique:users',
             'gender' => 'required|string',
             'agama' => 'required|string',
-            'role' => 'required|string',
+            'tempat_lahir' => 'required|string|max:100',
+            'tgl_lahir' => 'required|date',
+            'status' => 'required|string',
+            'jenjang' => 'required|string|max:50',
             'password' => 'required|string|min:8|confirmed',
         ]);
 
         try {
             $user = new User();
             $user->name = $request->name;
-            $user->username = $request->username;
             $user->nip = $request->nip;
             $user->gender = $request->gender;
             $user->agama = $request->agama;
             $user->role = $request->role;
+            $user->tempat_lahir = $request->tempat_lahir;
+            $user->tgl_lahir = $request->tgl_lahir;
+            $user->status = $request->status;
+            $user->jenjang = $request->jenjang;
             $user->password = bcrypt($request->password);
+            $user->role = 'guru';
             $user->save();
 
             return redirect()->route('data_guru')->with('success', 'Guru berhasil ditambahkan.');
@@ -63,11 +69,14 @@ class GuruController extends Controller
         // Validasi data yang diinput
         $validatedData = $request->validate([
             'name' => 'required|string|max:255',
-            'username' => 'required|string|max:255|unique:users,username,' . $id,
             'nip' => 'required|numeric',
             'gender' => 'required|string',
             'agama' => 'required|string',
             'role' => 'required|string',
+            'tempat_lahir' => 'required|string|max:100',
+            'tgl_lahir' => 'required|date',
+            'status' => 'required|string',
+            'jenjang' => 'required|string|max:50',
             'password' => 'nullable|string|min:8|confirmed',
         ]);
 
@@ -76,10 +85,13 @@ class GuruController extends Controller
 
         // Update data guru
         $guru->name = $validatedData['name'];
-        $guru->username = $validatedData['username'];
         $guru->nip = $validatedData['nip'];
         $guru->gender = $validatedData['gender'];
         $guru->agama = $validatedData['agama'];
+        $guru->tempat_lahir = $validatedData['tempat_lahir'];
+        $guru->tgl_lahir = $validatedData['tgl_lahir'];
+        $guru->status = $validatedData['status'];
+        $guru->jenjang = $validatedData['jenjang'];
         $guru->role = $validatedData['role'];
 
         // Update password jika diisi

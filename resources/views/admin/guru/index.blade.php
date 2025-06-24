@@ -53,10 +53,14 @@
                 <thead class="bg-gradient-to-r from-blue-600 to-blue-500 text-white">
                     <tr>
                         <th class="px-6 py-3 text-left">#</th>
-                        <th class="px-6 py-3 text-left">Nama Guru</th>
                         <th class="px-6 py-3 text-left">NIP</th>
-                        <th class="px-6 py-3 text-left">Gender</th>
+                        <th class="px-6 py-3 text-left">Nama Guru</th>
+                        <th class="px-6 py-3 text-left">Tempat Lahir</th>
+                        <th class="px-6 py-3 text-left">Tanggal Lahir</th>
+                        <th class="px-6 py-3 text-left">Jenis kelamin</th>
                         <th class="px-6 py-3 text-left">Agama</th>
+                        <th class="px-6 py-3 text-left">Status</th>
+                        <th class="px-6 py-3 text-left">Jenjang</th>
                         <th class="px-6 py-3 text-left">Aksi</th>
                     </tr>
                 </thead>
@@ -64,10 +68,15 @@
                     @foreach ($teachers as $teacher)
                         <tr class="hover:bg-gray-50 transition-all duration-200 ease-in-out">
                             <td class="px-6 py-3 text-gray-800">{{ $loop->iteration }}</td>
-                            <td class="px-6 py-3 text-gray-800">{{ $teacher->name }}</td>
                             <td class="px-6 py-3 text-gray-800">{{ $teacher->nip }}</td>
+                            <td class="px-6 py-3 text-gray-800">{{ $teacher->name }}</td>
+                            <td class="px-6 py-3 text-gray-800">{{ $teacher->tempat_lahir }}</td>
+                            <td class="px-6 py-3 text-gray-800">
+                                {{ \Carbon\Carbon::parse($teacher->tanggal_lahir)->format('d-m-Y') }}</td>
                             <td class="px-6 py-3 text-gray-800">{{ $teacher->gender }}</td>
                             <td class="px-6 py-3 text-gray-800">{{ $teacher->agama }}</td>
+                            <td class="px-6 py-3 text-gray-800">{{ $teacher->status }}</td>
+                            <td class="px-6 py-3 text-gray-800">{{ $teacher->jenjang }}</td>
                             <td class="px-6 py-3">
                                 <a href="{{ route('guru.edit', $teacher->id) }}"
                                     class="text-blue-600 hover:text-blue-800 mx-2">

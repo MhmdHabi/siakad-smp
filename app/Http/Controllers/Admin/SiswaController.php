@@ -28,23 +28,36 @@ class SiswaController extends Controller
         $validated = $request->validate([
             'name' => 'required|string|max:255',
             'nisn' => 'required|integer|unique:users,nisn',
+            'nis' => 'required|string|max:50',
+            'tempat_lahir' => 'required|string|max:100',
+            'tgl_lahir' => 'required|date',
+            'alamat' => 'required|string',
+            'no_tlp' => 'required|string|max:20',
             'gender' => 'required|in:Laki-laki,Perempuan',
+            'agama' => 'required|string',
         ]);
 
         // Wrap database operations in a transaction
         DB::transaction(function () use ($validated) {
             // Buat data siswa baru dan set role default menjadi 'siswa'
-            $siswa = User::create([
+            User::create([
                 'name' => $validated['name'],
                 'nisn' => $validated['nisn'],
+                'nis' => $validated['nis'],
+                'tempat_lahir' => $validated['tempat_lahir'],
+                'tgl_lahir' => $validated['tgl_lahir'],
+                'alamat' => $validated['alamat'],
+                'no_tlp' => $validated['no_tlp'],
                 'gender' => $validated['gender'],
-                'role' => 'siswa',  // Set default role menjadi siswa
+                'agama' => $validated['agama'],
+                'role' => 'siswa',
             ]);
         });
 
         // Redirect dengan pesan sukses setelah transaksi selesai
         return redirect()->route('data_siswa')->with('success', 'Data siswa berhasil ditambahkan!');
     }
+
 
     public function edit($id)
     {
@@ -54,14 +67,18 @@ class SiswaController extends Controller
 
     public function update(Request $request, $id)
     {
-        // Validate the request data
         $validated = $request->validate([
-            'name' => 'required|string|max:255',
-            'nisn' => 'required|integer',
-            'gender' => 'required|string|in:Laki-laki,Perempuan',
+            'name' => 'string|max:255',
+            'nisn' => 'integer',
+            'gender' => 'string|in:Laki-laki,Perempuan',
+            'nis' => 'string|max:50',
+            'tempat_lahir' => 'string|max:100',
+            'tgl_lahir' => 'date',
+            'alamat' => 'string|max:255',
+            'no_tlp' => 'string|max:20',
+            'agama' => 'string',
         ]);
 
-        // Find the student by ID
         $user = User::findOrFail($id);
 
         try {
@@ -70,6 +87,12 @@ class SiswaController extends Controller
                     'name' => $validated['name'],
                     'nisn' => $validated['nisn'],
                     'gender' => $validated['gender'],
+                    'nis' => $validated['nis'],
+                    'tempat_lahir' => $validated['tempat_lahir'],
+                    'tgl_lahir' => $validated['tgl_lahir'],
+                    'alamat' => $validated['alamat'],
+                    'no_tlp' => $validated['no_tlp'],
+                    'agama' => $validated['agama'],
                 ]);
             });
 
@@ -86,11 +109,9 @@ class SiswaController extends Controller
         // Find the user by ID
         $user = User::findOrFail($id);
 
-        // Hapus user
+
         // Delete the user
         $user->delete();
-
-        // Redirect ke halaman sebelumnya dengan message sukses
         // Redirect back with a success message
         return redirect()->route('data_siswa')->with('success', 'Data Siswa berhasil dihapus');
     }

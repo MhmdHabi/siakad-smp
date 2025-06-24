@@ -56,7 +56,7 @@
                 <!-- Tombol untuk layar besar -->
                 <a href="{{ route('siswa.create') }}"
                     class="hidden sm:inline-block text-sm px-6 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-400">
-                    <i class="fas fa-user-plus mr-2"></i> Tambah Data
+                    <i class="fas fa-user-plus mr-2"></i> Tambah Data Siswa
                 </a>
 
                 <!-- Ikon untuk layar kecil -->
@@ -73,21 +73,37 @@
         <div class="overflow-x-auto p-4">
             <table class="min-w-full table-auto border-separate border-spacing-0" id="dataTable">
                 <thead class="bg-gradient-to-r from-blue-600 to-blue-500 text-white">
-                    <tr>
-                        <th class="px-6 py-3 text-left">#</th>
-                        <th class="px-6 py-3 text-left">Nama User</th>
-                        <th class="px-6 py-3 text-left">Nisn/Nis</th>
-                        <th class="px-6 py-3 text-left">Gender</th>
+                    <tr class="text-sm">
+                        <th class="px-6 py-3 text-left">No</th>
+                        <th class="px-6 py-3 text-left">NIS</th>
+                        <th class="px-6 py-3 text-left">NISN</th>
+                        <th class="px-6 py-3 text-left">Nama Siswa</th>
+                        <th class="px-6 py-3 text-left">Tempat Lahir</th>
+                        <th class="px-6 py-3 text-left">Tanggal Lahir</th>
+                        <th class="px-6 py-3 text-left">Agama</th>
+                        <th class="px-6 py-3 text-left">Alamat</th>
+                        <th class="px-6 py-3 text-left">No Telepon</th>
+                        <th class="px-6 py-3 text-left">Jenis Kelamin</th>
                         <th class="px-6 py-3 text-center">Aksi</th>
                     </tr>
                 </thead>
                 <tbody class="divide-y divide-gray-200">
                     @foreach ($users as $user)
-                        <tr class="hover:bg-gray-50 transition-all duration-200 ease-in-out">
+                        <tr class="hover:bg-gray-50 transition-all duration-200 ease-in-out text-sm">
                             <td class="px-6 py-3 text-gray-800">{{ $loop->iteration }}</td>
-                            <td class="px-6 py-3 text-gray-800">{{ $user->name }}</td>
+                            <td class="px-6 py-3 text-gray-800">{{ $user->nis }}</td>
                             <td class="px-6 py-3 text-gray-800">{{ $user->nisn }}</td>
-                            <td class="px-6 py-3 text-gray-800">{{ $user->gender }}</td>
+                            <td class="px-6 py-3 text-gray-800">{{ $user->name }}</td>
+                            <td class="px-6 py-3 text-gray-800">{{ $user->tempat_lahir }}</td>
+                            <td class="px-6 py-3 text-gray-800">{{ $user->tgl_lahir }}</td>
+                            <td class="px-6 py-3 text-gray-800">{{ $user->agama }}</td>
+                            <td class="px-6 py-3 text-gray-800">{{ $user->alamat }}</td>
+                            <td class="px-6 py-3 text-gray-800">{{ $user->no_tlp }}</td>
+                            <td class="px-6 py-3 text-gray-700 flex items-center gap-2">
+                                {!! $user->gender === 'Laki-laki'
+                                    ? '<i class="fas fa-mars text-blue-500 text-lg"></i> <span class="text-gray-800">Laki-laki</span>'
+                                    : '<i class="fas fa-venus text-pink-500 text-lg"></i> <span class="text-gray-800">Perempuan</span>' !!}
+                            </td>
                             <td class="px-6 py-3 text-center">
                                 <a href="{{ route('siswa.edit', $user->id) }}"
                                     class="text-blue-600 hover:text-blue-800 mx-2">

@@ -29,6 +29,7 @@
                         <th class="px-6 py-3 text-left">#</th>
                         <th class="px-6 py-3 text-left">Nama Ruangan</th>
                         <th class="px-6 py-3 text-left">Kode Ruangan</th>
+                        <th class="px-6 py-3 text-left">Kapasitas</th>
                         <th class="px-6 py-3 text-left">Dibuat Pada</th>
                         <th class="px-6 py-3 text-left">Aksi</th>
                     </tr>
@@ -39,6 +40,7 @@
                             <td class="px-6 py-3 text-gray-800">{{ $loop->iteration }}</td>
                             <td class="px-6 py-3 text-gray-800">{{ $item->nama_ruangan }}</td>
                             <td class="px-6 py-3 text-gray-800">{{ $item->kode_ruangan }}</td>
+                            <td class="px-6 py-3 text-gray-800">{{ $item->kapasitas }}</td>
                             <td class="px-6 py-3 text-gray-800">{{ $item->created_at->format('d M Y') }}</td>
                             <td class="px-6 py-3">
                                 <a href="{{ route('ruangan.edit', $item->id) }}"

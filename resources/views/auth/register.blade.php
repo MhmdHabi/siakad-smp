@@ -48,7 +48,7 @@
                             required />
                     </div>
                     <div>
-                        <label for="gender" class="block text-sm font-medium text-gray-700">Gender</label>
+                        <label for="gender" class="block text-sm font-medium text-gray-700">Jenis Kelamin</label>
                         <select id="gender" name="gender"
                             class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400"
                             required>

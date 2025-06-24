@@ -24,12 +24,14 @@ class RuanganController extends Controller
         $request->validate([
             'nama_ruangan' => 'required|string|max:255',
             'kode_ruangan' => 'required|string|max:50|unique:ruangans,kode_ruangan',
+            'kapasitas' => 'required|integer|min:1',
         ]);
 
         try {
             Ruangan::create([
                 'nama_ruangan' => $request->nama_ruangan,
                 'kode_ruangan' => $request->kode_ruangan,
+                'kapasitas' => $request->kapasitas,
             ]);
 
             return redirect()->route('admin.ruangan')->with('success', 'Ruangan berhasil ditambahkan.');
@@ -51,6 +53,7 @@ class RuanganController extends Controller
         $request->validate([
             'nama_ruangan' => 'required|string|max:255',
             'kode_ruangan' => 'nullable|string|max:50',
+            'kapasitas' => 'required|integer|min:1',
         ]);
 
         try {
@@ -58,6 +61,7 @@ class RuanganController extends Controller
             $ruangan->update([
                 'nama_ruangan' => $request->nama_ruangan,
                 'kode_ruangan' => $request->kode_ruangan,
+                'kapasitas' => $request->kapasitas,
             ]);
 
             return redirect()->route('admin.ruangan')->with('success', 'Ruangan berhasil diperbarui.');

@@ -12,6 +12,7 @@ class Ruangan extends Model
     protected $fillable = [
         'nama_ruangan',
         'kode_ruangan',
+        'kapasitas',
     ];
 
     public function jadwalPelajarans()

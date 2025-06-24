@@ -26,7 +26,12 @@
             @csrf
             <!-- Nama Mata Pelajaran -->
             <div class="mb-4">
-                <label for="name" class="block text-sm font-medium text-gray-700">Nama Mata Pelajaran</label>
+                <div class="relative inline-block">
+                    <label for="gender" class="block text-sm font-medium text-gray-700">Nama Mata Pelajaran</label>
+                    <span class="absolute top-1 -right-2 text-red-500 text-[7px]">
+                        <i class="fas fa-asterisk"></i>
+                    </span>
+                </div>
                 <input type="text" id="nama_mapel" name="nama_mapel" value="{{ old('nama_mapel') }}"
                     class="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500">
                 @error('nama_mapel')
@@ -35,7 +40,12 @@
             </div>
 
             <div class="mb-4">
-                <label for="name" class="block text-sm font-medium text-gray-700">Kode Mata Pelajaran</label>
+                <div class="relative inline-block">
+                    <label for="gender" class="block text-sm font-medium text-gray-700">Kode Mata Pelajaran</label>
+                    <span class="absolute top-1 -right-2 text-red-500 text-[7px]">
+                        <i class="fas fa-asterisk"></i>
+                    </span>
+                </div>
                 <input type="text" id="kode_mapel" name="kode_mapel" value="{{ old('kode_mapel') }}"
                     class="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500">
                 @error('kode_mapel')

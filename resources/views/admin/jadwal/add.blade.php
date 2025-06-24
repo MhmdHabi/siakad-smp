@@ -29,7 +29,12 @@
 
             <!-- Mata Pelajaran -->
             <div class="mb-4">
-                <label for="mapel_id" class="block text-sm font-medium text-gray-700">Mata Pelajaran</label>
+                <div class="relative inline-block">
+                    <label for="gender" class="block text-sm font-medium text-gray-700">Mata Pelajaran</label>
+                    <span class="absolute top-1 -right-2 text-red-500 text-[7px]">
+                        <i class="fas fa-asterisk"></i>
+                    </span>
+                </div>
                 <select name="mapel_id" id="mapel_id"
                     class="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500">
                     <option value="">Pilih Mata Pelajaran</option>
@@ -46,7 +51,12 @@
 
             <!-- Guru -->
             <div class="mb-4">
-                <label for="guru_id" class="block text-sm font-medium text-gray-700">Guru</label>
+                <div class="relative inline-block">
+                    <label for="gender" class="block text-sm font-medium text-gray-700">Guru</label>
+                    <span class="absolute top-1 -right-2 text-red-500 text-[7px]">
+                        <i class="fas fa-asterisk"></i>
+                    </span>
+                </div>
                 <select name="guru_id" id="guru_id"
                     class="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500">
                     <option value="">Pilih Guru</option>
@@ -63,7 +73,12 @@
 
             <!-- Kelas -->
             <div class="mb-4">
-                <label for="kelas_id" class="block text-sm font-medium text-gray-700">Kelas</label>
+                <div class="relative inline-block">
+                    <label for="gender" class="block text-sm font-medium text-gray-700">Kelas</label>
+                    <span class="absolute top-1 -right-2 text-red-500 text-[7px]">
+                        <i class="fas fa-asterisk"></i>
+                    </span>
+                </div>
                 <select name="kelas_id" id="kelas_id"
                     class="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500">
                     <option value="">Pilih Kelas</option>
@@ -80,7 +95,12 @@
 
             <!-- Ruangan -->
             <div class="mb-4">
-                <label for="ruangan_id" class="block text-sm font-medium text-gray-700">Ruangan</label>
+                <div class="relative inline-block">
+                    <label for="gender" class="block text-sm font-medium text-gray-700">Ruangan</label>
+                    <span class="absolute top-1 -right-2 text-red-500 text-[7px]">
+                        <i class="fas fa-asterisk"></i>
+                    </span>
+                </div>
                 <select name="ruangan_id" id="ruangan_id"
                     class="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500">
                     <option value="">Pilih Ruangan</option>
@@ -97,7 +117,12 @@
 
             <!-- Hari -->
             <div class="mb-4">
-                <label for="hari" class="block text-sm font-medium text-gray-700">Hari</label>
+                <div class="relative inline-block">
+                    <label for="gender" class="block text-sm font-medium text-gray-700">Hari</label>
+                    <span class="absolute top-1 -right-2 text-red-500 text-[7px]">
+                        <i class="fas fa-asterisk"></i>
+                    </span>
+                </div>
                 <select name="hari" id="hari"
                     class="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500">
                     <option value="">Pilih Hari</option>
@@ -115,7 +140,12 @@
 
             <!-- Jam Mulai -->
             <div class="mb-4">
-                <label for="jam_mulai" class="block text-sm font-medium text-gray-700">Jam Mulai</label>
+                <div class="relative inline-block">
+                    <label for="gender" class="block text-sm font-medium text-gray-700">Jam Mulai</label>
+                    <span class="absolute top-1 -right-2 text-red-500 text-[7px]">
+                        <i class="fas fa-asterisk"></i>
+                    </span>
+                </div>
                 <input type="time" id="jam_mulai" name="jam_mulai" value="{{ old('jam_mulai') }}"
                     class="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500">
                 @error('jam_mulai')
@@ -125,7 +155,12 @@
 
             <!-- Jam Selesai -->
             <div class="mb-4">
-                <label for="jam_selesai" class="block text-sm font-medium text-gray-700">Jam Selesai</label>
+                <div class="relative inline-block">
+                    <label for="gender" class="block text-sm font-medium text-gray-700">Jam Selesai</label>
+                    <span class="absolute top-1 -right-2 text-red-500 text-[7px]">
+                        <i class="fas fa-asterisk"></i>
+                    </span>
+                </div>
                 <input type="time" id="jam_selesai" name="jam_selesai" value="{{ old('jam_selesai') }}"
                     class="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500">
                 @error('jam_selesai')

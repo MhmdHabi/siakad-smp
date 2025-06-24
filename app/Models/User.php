@@ -27,6 +27,13 @@ class User extends Authenticatable
         'gender',
         'agama',
         'role',
+        'nis',
+        'tempat_lahir',
+        'tgl_lahir',
+        'alamat',
+        'no_tlp',
+        'status',
+        'jenjang',
         'created_at',
     ];
 

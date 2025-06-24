@@ -22,17 +22,22 @@ class TahunAkademikSeeder extends Seeder
             [
                 'tahun' => '2023/2024',
                 'semester' => 'genap',
-                'is_aktif' => false,
+                'is_aktif' => true,
             ],
             [
                 'tahun' => '2024/2025',
                 'semester' => 'ganjil',
-                'is_aktif' => false,
+                'is_aktif' => true,
             ],
             [
                 'tahun' => '2024/2025',
                 'semester' => 'genap',
-                'is_aktif' => false,
+                'is_aktif' => true,
+            ],
+            [
+                'tahun' => '2025/2026',
+                'semester' => 'ganjil',
+                'is_aktif' => true,
             ],
         ];
 

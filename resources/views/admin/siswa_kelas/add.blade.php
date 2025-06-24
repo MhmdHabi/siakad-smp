@@ -27,7 +27,12 @@
             @csrf
             <!-- Pilih Siswa -->
             <div class="mb-4">
-                <label for="siswa_id" class="block text-sm font-medium text-gray-700">Pilih Siswa</label>
+                <div class="relative inline-block">
+                    <label for="gender" class="block text-sm font-medium text-gray-700">Pilih Siswa</label>
+                    <span class="absolute top-1 -right-2 text-red-500 text-[7px]">
+                        <i class="fas fa-asterisk"></i>
+                    </span>
+                </div>
                 <select id="siswa_id" name="siswa_id"
                     class="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500">
                     <option value="">-- Pilih Siswa --</option>
@@ -44,7 +49,12 @@
 
             <!-- Pilih Kelas -->
             <div class="mb-4">
-                <label for="kelas_id" class="block text-sm font-medium text-gray-700">Pilih Kelas</label>
+                <div class="relative inline-block">
+                    <label for="gender" class="block text-sm font-medium text-gray-700">Pilih Kelas</label>
+                    <span class="absolute top-1 -right-2 text-red-500 text-[7px]">
+                        <i class="fas fa-asterisk"></i>
+                    </span>
+                </div>
                 <select id="kelas_id" name="kelas_id"
                     class="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500">
                     <option value="">-- Pilih Kelas --</option>
@@ -61,7 +71,12 @@
 
             <!-- Pilih Tahun Akademik -->
             <div class="mb-4">
-                <label for="tahun_akademik_id" class="block text-sm font-medium text-gray-700">Pilih Tahun Akademik</label>
+                <div class="relative inline-block">
+                    <label for="gender" class="block text-sm font-medium text-gray-700">Pilih Tahun Akademik</label>
+                    <span class="absolute top-1 -right-2 text-red-500 text-[7px]">
+                        <i class="fas fa-asterisk"></i>
+                    </span>
+                </div>
                 <select id="tahun_akademik_id" name="tahun_akademik_id"
                     class="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500">
                     <option value="">-- Pilih Tahun Akademik --</option>

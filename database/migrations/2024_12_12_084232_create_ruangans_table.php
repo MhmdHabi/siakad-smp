@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('nama_ruangan');
             $table->string('kode_ruangan')->unique()->nullable();
+            $table->integer('kapasitas')->nullable();
             $table->timestamps();
         });
     }

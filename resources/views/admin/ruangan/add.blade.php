@@ -27,7 +27,12 @@
 
             <!-- Kode Ruangan -->
             <div class="mb-4">
-                <label for="kode_ruangan" class="block text-sm font-medium text-gray-700">Kode Ruangan</label>
+                <div class="relative inline-block">
+                    <label for="gender" class="block text-sm font-medium text-gray-700">Kode Ruangan</label>
+                    <span class="absolute top-1 -right-2 text-red-500 text-[7px]">
+                        <i class="fas fa-asterisk"></i>
+                    </span>
+                </div>
                 <input type="text" id="kode_ruangan" name="kode_ruangan" value="{{ old('kode_ruangan') }}"
                     class="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500">
                 @error('kode_ruangan')
@@ -37,10 +42,31 @@
 
             <!-- Nama Ruangan -->
             <div class="mb-4">
-                <label for="nama_ruangan" class="block text-sm font-medium text-gray-700">Nama Ruangan</label>
+                <div class="relative inline-block">
+                    <label for="gender" class="block text-sm font-medium text-gray-700">Nama Ruangan</label>
+                    <span class="absolute top-1 -right-2 text-red-500 text-[7px]">
+                        <i class="fas fa-asterisk"></i>
+                    </span>
+                </div>
                 <input type="text" id="nama_ruangan" name="nama_ruangan" value="{{ old('nama_ruangan') }}"
                     class="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500">
                 @error('nama_ruangan')
+                    <div class="text-red-600 text-sm mt-1">{{ $message }}</div>
+                @enderror
+            </div>
+
+            <!-- Kapasitas -->
+            <div class="mb-4">
+                <div class="relative inline-block">
+                    <label for="gender" class="block text-sm font-medium text-gray-700">Kapasitas</label>
+                    <span class="absolute top-1 -right-2 text-red-500 text-[7px]">
+                        <i class="fas fa-asterisk"></i>
+                    </span>
+                </div>
+                <input type="number" id="kapasitas" name="kapasitas" value="{{ old('kapasitas') }}"
+                    class="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+                    min="1">
+                @error('kapasitas')
                     <div class="text-red-600 text-sm mt-1">{{ $message }}</div>
                 @enderror
             </div>

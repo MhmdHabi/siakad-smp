@@ -1,12 +1,14 @@
 <div id="sidebar" class="hidden lg:block lg:w-64 bg-[#211C84] shadow-md transition-all duration-300 ease-in-out">
     <div class="p-4 flex justify-between items-center mx-auto">
         <!-- User Info -->
-        <div id="sidebarTitle" class="flex items-center space-x-2 text-white">
-            <i class="fas fa-user-circle text-3xl"></i>
-            <span class="text-sm font-medium">
-                {{ auth()->user()->name }}
-                {{ auth()->user()->email }}
-            </span>
+        <div id="sidebarTitle" class="text-white">
+            <div class="flex items-center space-x-2">
+                <i class="fas fa-user-circle text-3xl"></i>
+                <div class="flex flex-col text-sm font-medium">
+                    <span>{{ auth()->user()->name }}</span>
+                    <span class="text-xs text-gray-300">{{ auth()->user()->email }}</span>
+                </div>
+            </div>
         </div>
         <!-- Hamburger Icon -->
         <button id="toggleSidebar" class="focus:outline-none text-white text-lg">

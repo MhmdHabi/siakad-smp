@@ -38,7 +38,7 @@
                             <i class="fas fa-asterisk"></i>
                         </span>
                     </div>
-                    <input type="number" id="nisn" name="nisn" value="{{ old('nisn') }}"
+                    <input type="string" id="nisn" name="nisn" value="{{ old('nisn') }}"
                         class="mt-1 p-2 w-full border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
                     @error('nisn')
                         <div class="text-red-500 text-sm mt-1">{{ $message }}</div>
@@ -51,7 +51,7 @@
                             <i class="fas fa-asterisk"></i>
                         </span>
                     </div>
-                    <input type="text" id="nis" name="nis" value="{{ old('nis') }}"
+                    <input type="string" id="nis" name="nis" value="{{ old('nis') }}"
                         class="mt-1 p-2 w-full border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
                     @error('nis')
                         <div class="text-red-500 text-sm mt-1">{{ $message }}</div>

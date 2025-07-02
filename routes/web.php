@@ -3,6 +3,10 @@
 use App\Http\Controllers\Admin\GuruController;
 use App\Http\Controllers\Admin\JadwalPelajaranController;
 use App\Http\Controllers\Admin\KelasController;
+use App\Http\Controllers\Admin\LaporanGuruController;
+use App\Http\Controllers\Admin\LaporanMapelController;
+use App\Http\Controllers\Admin\LaporanRuanganController;
+use App\Http\Controllers\Admin\LaporanSiswaController;
 use App\Http\Controllers\Admin\MapelController;
 use App\Http\Controllers\Admin\RuanganController;
 use App\Http\Controllers\Admin\SiswaController;
@@ -102,6 +106,14 @@ Route::prefix('admin')->middleware('role:admin')->group(function () {
         Route::get('/siswa_kelas/{id}/edit', [SiswaKelasController::class, 'edit'])->name('siswa_kelas.edit');
         Route::put('/siswa_kelas/{id}', [SiswaKelasController::class, 'update'])->name('siswa_kelas.update');
         Route::delete('/siswa_kelas/{id}', [SiswaKelasController::class, 'destroy'])->name('siswa_kelas.destroy');
+    });
+
+    // Laporan
+    Route::prefix('/')->group(function () {
+        Route::get('/laporan_guru', [LaporanGuruController::class, 'index'])->name('admin.laporan.guru');
+        Route::get('/laporan_siswa', [LaporanSiswaController::class, 'index'])->name('admin.laporan.siswa');
+        Route::get('/laporan_ruangan', [LaporanRuanganController::class, 'index'])->name('admin.laporan.ruangan');
+        Route::get('/laporan_mapel', [LaporanMapelController::class, 'index'])->name('admin.laporan.mapel');
     });
 });
 

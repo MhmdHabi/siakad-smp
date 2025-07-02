@@ -27,7 +27,7 @@ class SiswaController extends Controller
         // Validasi data request
         $validated = $request->validate([
             'name' => 'required|string|max:255',
-            'nisn' => 'required|integer|unique:users,nisn',
+            'nisn' => 'required|string|unique:users,nisn',
             'nis' => 'required|string|max:50',
             'tempat_lahir' => 'required|string|max:100',
             'tgl_lahir' => 'required|date',
@@ -69,7 +69,7 @@ class SiswaController extends Controller
     {
         $validated = $request->validate([
             'name' => 'string|max:255',
-            'nisn' => 'integer',
+            'nisn' => 'string|unique:users,nisn',
             'gender' => 'string|in:Laki-laki,Perempuan',
             'nis' => 'string|max:50',
             'tempat_lahir' => 'string|max:100',

@@ -31,6 +31,7 @@ class GuruController extends Controller
             'tgl_lahir' => 'required|date',
             'status' => 'required|string',
             'jenjang' => 'required|string|max:50',
+            'tugas_tambahan' => 'required|string',
             'password' => 'required|string|min:8|confirmed',
         ]);
 
@@ -45,6 +46,7 @@ class GuruController extends Controller
             $user->tgl_lahir = $request->tgl_lahir;
             $user->status = $request->status;
             $user->jenjang = $request->jenjang;
+            $user->tugas_tambahan = $request->tugas_tambahan;
             $user->password = bcrypt($request->password);
             $user->role = 'guru';
             $user->save();
@@ -76,6 +78,7 @@ class GuruController extends Controller
             'tempat_lahir' => 'required|string|max:100',
             'tgl_lahir' => 'required|date',
             'status' => 'required|string',
+            'tugas_tambahan' => 'required|string',
             'jenjang' => 'required|string|max:50',
             'password' => 'nullable|string|min:8|confirmed',
         ]);
@@ -92,6 +95,7 @@ class GuruController extends Controller
         $guru->tgl_lahir = $validatedData['tgl_lahir'];
         $guru->status = $validatedData['status'];
         $guru->jenjang = $validatedData['jenjang'];
+        $guru->tugas_tambahan = $validatedData['tugas_tambahan'];
         $guru->role = $validatedData['role'];
 
         // Update password jika diisi

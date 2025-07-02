@@ -29,6 +29,7 @@ return new class extends Migration
             $table->string('no_tlp')->nullable();
             $table->string('status')->nullable();
             $table->string('jenjang')->nullable();
+            $table->string('tugas_tambahan')->nullable();
             $table->enum('role', ['siswa', 'guru', 'admin'])->nullable()->default('siswa');
             $table->rememberToken();
             $table->timestamps();

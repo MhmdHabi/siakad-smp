@@ -123,6 +123,17 @@
                 @enderror
             </div>
 
+            <!-- Tugas Tambahan -->
+            <div class="mb-4">
+                <label for="tugas_tambahan" class="block text-sm font-medium text-gray-700">Tugas Tambahan</label>
+                <input type="text" id="tugas_tambahan" name="tugas_tambahan"
+                    value="{{ old('tugas_tambahan', $guru->tugas_tambahan) }}"
+                    class="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500">
+                @error('tugas_tambahan')
+                    <div class="text-red-600 text-sm mt-1">{{ $message }}</div>
+                @enderror
+            </div>
+
             <!-- Role -->
             <div class="mb-4">
                 <label for="role" class="block text-sm font-medium text-gray-700">Role</label>

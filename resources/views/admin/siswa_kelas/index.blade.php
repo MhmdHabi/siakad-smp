@@ -6,12 +6,20 @@
     <div class="container mx-auto mt-5 bg-gray-100 shadow-lg rounded-lg p-6">
         <!-- Success and Error Messages -->
         @if (session('success'))
-            <div class="mb-4 p-4 bg-green-100 text-green-800 rounded-lg">
-                {{ session('success') }}
+            <div class="mb-4 p-4 bg-green-100 text-green-800 rounded-lg flex flex-col items-start">
+                <div class="flex items-center space-x-2 mb-1">
+                    <i class="fas fa-check-circle text-green-600 text-lg"></i>
+                    <span class="font-semibold">Berhasil!</span>
+                </div>
+                <span>{{ session('success') }}</span>
             </div>
         @elseif (session('error'))
-            <div class="mb-4 p-4 bg-red-100 text-red-800 rounded-lg">
-                {{ session('error') }}
+            <div class="mb-4 p-4 bg-red-100 text-red-800 rounded-lg flex flex-col items-start">
+                <div class="flex items-center space-x-2 mb-1">
+                    <i class="fas fa-times-circle text-red-600 text-lg"></i>
+                    <span class="font-semibold">Gagal!</span>
+                </div>
+                <span>{{ session('error') }}</span>
             </div>
         @endif
 

@@ -34,6 +34,7 @@ class User extends Authenticatable
         'no_tlp',
         'status',
         'jenjang',
+        'tugas_tambahan',
         'created_at',
     ];
 

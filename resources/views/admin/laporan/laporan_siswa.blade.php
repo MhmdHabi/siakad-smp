@@ -18,34 +18,43 @@
             }
         }
     </style>
-
 </head>
 
 <body class="bg-gray-50 text-gray-900 min-h-screen py-10">
     <div class="max-w-4xl mx-auto px-6">
         <div class="bg-white p-6">
-            <h1 class="text-2xl font-semibold text-center text-gray-800 mb-6 border-b pb-4">Laporan Data Siswa</h1>
 
-            <div class="flex justify-between items-center mb-4">
-                <!-- Filter Kelas -->
-                <form method="GET" action="{{ route('admin.laporan.siswa') }}" class="inline-block">
-                    <label for="kelas_id" class="text-sm font-medium text-gray-700 mr-2">Filter Kelas:</label>
-                    <select name="kelas_id" id="kelas_id" onchange="this.form.submit()"
-                        class="text-sm bg-white border border-gray-300 rounded px-3 py-2 shadow-sm focus:outline-none focus:ring focus:border-blue-300">
-                        <option value="">-- Semua Kelas --</option>
-                        @foreach ($kelasList as $kelas)
-                            <option value="{{ $kelas->id }}" {{ $selectedKelas == $kelas->id ? 'selected' : '' }}>
-                                {{ $kelas->nama_kelas }}
-                            </option>
-                        @endforeach
-                    </select>
-                </form>
+            <!-- Header Sekolah -->
+            <div class="text-center mb-7 pb-2">
+                <h2 class="text-2xl font-bold text-gray-900">SMP 1 ATAP MERANGIN</h2>
+                <p class="text-sm text-gray-700 mt-1">Jl. Pendidikan No. 123, Merangin, Jambi</p>
+            </div>
 
-                <!-- Tombol Cetak -->
-                <button onclick="window.print()"
-                    class="bg-gray-500 text-white px-4 py-1 shadow hover:bg-blue-700 transition">
-                    Cetak
-                </button>
+            <!-- Judul Laporan dan Filter -->
+            <div class="flex justify-between items-center border-b pb-4 mb-6">
+                <h1 class="text-xl font-semibold text-gray-800">Laporan Data Siswa</h1>
+
+                <div class="no-print flex items-center gap-4">
+                    <form method="GET" action="{{ route('admin.laporan.siswa') }}">
+                        <label for="kelas_id" class="text-sm font-medium text-gray-700 mr-2">Filter Kelas:</label>
+                        <select name="kelas_id" id="kelas_id" onchange="this.form.submit()"
+                            class="text-sm bg-white border border-gray-300 rounded px-3 py-2 shadow-sm focus:outline-none focus:ring focus:border-blue-300">
+                            <option value="">-- Semua Kelas --</option>
+                            @foreach ($kelasList as $kelas)
+                                <option value="{{ $kelas->id }}"
+                                    {{ $selectedKelas == $kelas->id ? 'selected' : '' }}>
+                                    {{ $kelas->nama_kelas }}
+                                </option>
+                            @endforeach
+                        </select>
+                    </form>
+
+                    <!-- Tombol Cetak -->
+                    <button onclick="window.print()"
+                        class="bg-gray-500 text-white px-4 py-1 shadow hover:bg-blue-700 transition">
+                        Cetak
+                    </button>
+                </div>
             </div>
 
             <!-- Tabel Siswa -->
@@ -76,6 +85,16 @@
                     </tbody>
                 </table>
             </div>
+
+            <!-- Tanda Tangan -->
+            <div class="mt-16 flex justify-end">
+                <div class="text-right">
+                    <p class="mb-1 mr-10">Mengetahui,</p>
+                    <div class="h-20"></div>
+                    <p class="text-gray-800 mr-5">Kepala Sekolah</p>
+                </div>
+            </div>
+
         </div>
     </div>
 </body>

@@ -19,16 +19,24 @@
     <div class="max-w-4xl mx-auto px-6">
         <div class="bg-white p-6">
 
-            <h1 class="text-2xl font-semibold text-center text-gray-800 mb-6 border-b pb-4">Laporan Data Ruangan</h1>
-
-            <!-- Tombol Cetak -->
-            <div class="mb-4 text-right no-print">
-                <button onclick="window.print()"
-                    class="bg-gray-500 text-white px-4 py-1 shadow hover:bg-blue-700 transition">
-                    Cetak
-                </button>
+            <!-- Header Sekolah -->
+            <div class="text-center mb-7 pb-2">
+                <h2 class="text-2xl font-bold text-gray-900">SMP 1 ATAP MERANGIN</h2>
+                <p class="text-sm text-gray-700 mt-1">Jl. Pendidikan No. 123, Merangin, Jambi</p>
             </div>
 
+            <!-- Judul Laporan dan Tombol Cetak -->
+            <div class="flex items-center justify-between border-b pb-4 mb-6">
+                <h1 class="text-xl font-semibold text-gray-800">Laporan Data Ruangan</h1>
+                <div class="no-print">
+                    <button onclick="window.print()"
+                        class="bg-gray-500 text-white px-4 py-1 shadow hover:bg-blue-700 transition">
+                        Cetak
+                    </button>
+                </div>
+            </div>
+
+            <!-- Tabel Ruangan -->
             <div class="overflow-x-auto">
                 <table class="min-w-full divide-y divide-gray-300 text-sm text-left">
                     <thead class="bg-gray-100 text-gray-700">
@@ -54,6 +62,15 @@
                         @endforelse
                     </tbody>
                 </table>
+            </div>
+
+            <!-- Tanda Tangan -->
+            <div class="mt-16 flex justify-end">
+                <div class="text-right">
+                    <p class="mb-1 mr-10">Mengetahui,</p>
+                    <div class="h-20"></div>
+                    <p class="text-gray-800 mr-5">Kepala Sekolah</p>
+                </div>
             </div>
 
         </div>
